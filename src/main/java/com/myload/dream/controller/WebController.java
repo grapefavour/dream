@@ -14,7 +14,15 @@ public class WebController {
 
     @RequestMapping("/")
     public String start() {
+        return "mine";
+    }
+
+
+    @RequestMapping("/star")
+    public String star() {
         return "star";
     }
+
+
 
 }
