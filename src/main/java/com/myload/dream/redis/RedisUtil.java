@@ -52,13 +52,12 @@ public class RedisUtil {
     }
     //释放jedis和jedisPool资源
     public static void releaseResource(final Jedis jedis){
-        if (jedis == null){
+        if (jedis != null){
             jedis.close();
         }
-        if (jedisPool == null){
-            jedisPool.close();
-        }
+
     }
+
 
 
 

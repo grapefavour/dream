@@ -23,6 +23,9 @@ public class WebController {
         return "star";
     }
 
-
+    @RequestMapping("/sendyou")
+    public String sendyou() {
+        return "sendyou";
+    }
 
 }

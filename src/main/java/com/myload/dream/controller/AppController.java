@@ -5,6 +5,7 @@ import com.myload.dream.redis.RedisUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,8 +31,10 @@ public class AppController {
             if(key == null || key.length() == 0){
                 return "error";
             }
-            RedisUtil.getJedis().set(key,content);
+            Jedis jedis = RedisUtil.getJedis();
+            jedis.set(key,content);
             rsp.addHeader("Access-Control-Allow-Origin", "*");
+            RedisUtil.releaseResource(jedis);
             return "success";
         }catch (Exception e){
             return "error";
@@ -46,7 +49,9 @@ public class AppController {
             if(key == null || key.length() == 0){
                 return "no data";
             }
-            String content = RedisUtil.getJedis().get(key);
+            Jedis jedis = RedisUtil.getJedis();
+            String content = jedis.get(key);
+            RedisUtil.releaseResource(jedis);
             rsp.addHeader("Access-Control-Allow-Origin", "*");
             return content;
         }catch (Exception e){
