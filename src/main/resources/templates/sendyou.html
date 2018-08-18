@@ -168,12 +168,12 @@
 				});
 				
 				$(".bt2").click(function(){
-					$.post("http://www.xufavour.top/postKeyData",{
-						key:'testkey',
-						content:'testContent'
-					},function(data,status){
-					alert("数据：" + data + "\n状态：" + status);
-					});
+					$.get("http://www.lixinhan.cn/getKeyData?key=step1n",function(result){
+                        var cod = result;
+                        document.getElementById("text").innerHTML= cod;
+                        document.getElementById("step1").hidden = true;
+                        document.getElementById("step2").hidden = false;
+                    });
 				});
 				
 				$(".bt3").click(function(){
@@ -264,7 +264,7 @@
 				
 				$(".btMafan").click(function(){
 					
-					$.get("http://www.lixinhan.cn/getKeyData?key=mafan",function(result){
+					$.get("http://www.lixinhan.cn/getKeyData?key=nomafan",function(result){
 						var cod = result;
 						document.getElementById("text").innerHTML= cod;
 						document.getElementById("step5").hidden = true;
@@ -278,7 +278,7 @@
 				
 				$(".btNoMafan").click(function(){
 					
-					$.get("http://www.lixinhan.cn/getKeyData?key=nomafan",function(result){
+					$.get("http://www.lixinhan.cn/getKeyData?key=mafan",function(result){
 						var cod = result;
 						document.getElementById("text").innerHTML= cod;
 						document.getElementById("step5").hidden = true;
@@ -348,7 +348,7 @@
 <div id='title' hidden="true">这片星空送给你</div>
 <div id="content">
 	<br />
-	<p id="text">马上就要七夕了，这位那么可爱的小姐姐，我可以撩你嘛(●･◡･●)ﾉ♥</p>
+	<p id="text">七夕了，这位可爱的小仙女，我可以撩你嘛(●･◡･●)ﾉ♥</p>
 	<br />
 	<br />
 
